@@ -9,7 +9,7 @@
 
 ### JAX-RS 3.1 Tutorial
 
-JAX-RS 3.1 Documentation: https://eclipse-ee4j.github.io/jersey.github.io/documentation/latest3x/index.html
+JAX-RS 3.1 Documentation: https://gitlab.com/mkarg/jaxrs-done-right/-/tree/javase-tutorial/
 Example Code: https://gitlab.com/mkarg/jaxrs-done-right/-/blob/jaxrs-3.1/
 
 1. https://www.youtube.com/watch?v=J-S0aXfLc5U

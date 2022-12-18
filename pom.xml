@@ -104,11 +104,11 @@
         </plugins>
     </build>
 
-    <repositories>
+    <!--repositories>
         <repository>
             <name>Jakarta Staging</name>
             <id>jakarta-staging</id>
             <url>https://jakarta.oss.sonatype.org/content/repositories/staging</url>
         </repository>
-    </repositories>
+    </repositories-->
 </project>
