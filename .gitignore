@@ -35,3 +35,4 @@ bin/
 build/
 /bin1/
 java/build/**
+dependency-reduced-pom.xml

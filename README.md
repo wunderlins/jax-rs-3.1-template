@@ -9,7 +9,8 @@
 
 ### JAX-RS 3.1 Tutorial
 
-Example Code: https://gitlab.com/mkarg/jaxrs-done-right/-/blob/jaxrs-3.1/pom.xml
+JAX-RS 3.1 Documentation: https://eclipse-ee4j.github.io/jersey.github.io/documentation/latest3x/index.html
+Example Code: https://gitlab.com/mkarg/jaxrs-done-right/-/blob/jaxrs-3.1/
 
 1. https://www.youtube.com/watch?v=J-S0aXfLc5U
 2. https://www.youtube.com/watch?v=EK4HGMmYQOM
