@@ -5,6 +5,11 @@
 - run: `mvn exec:java`
 - build jar: `mvn package`
 
+## Building Blocks
+
+- `Main.java`: the application launcher, will start a Jersey Server
+- `HTML.java`: JAX-RS 3.1 filter, see `jakarta.ws.rs.core.Feature` how to automagically register features
+
 ## References
 
 ### JAX-RS 3.1 Tutorial
