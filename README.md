@@ -28,7 +28,7 @@ Example Code: https://gitlab.com/mkarg/jaxrs-done-right/-/blob/jaxrs-3.1/
 ## Use gitlab.com as maven repository
 
 **CAVE**: 
-- You **must** use Private-Token/Deploy-Token or Job-Token as `<name>` in `.m2/settings.xml` or you will always get a `401 Unauthorized`, see [Documentation][1].
+- You **must** use `Private-Token`/`Deploy-Token` or `Job-Token` as `<name>` in `.m2/settings.xml` or you will always get a `401 Unauthorized`, see [Documentation][1].
 - Use numeric project id in url
 
 ### Configuration
