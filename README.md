@@ -54,7 +54,7 @@ Example Code: https://gitlab.com/mkarg/jaxrs-done-right/-/blob/jaxrs-3.1/
 			<configuration>
 				<httpHeaders>
 					<property>
-                        <!-- Deploy-Token: is a project level token -->
+						<!-- Deploy-Token: is a project level token -->
 						<name>Deploy-Token</name>
 						<value>${env.GITLAB_WUNDERLINNET_WRITE}</value>
 					</property>
