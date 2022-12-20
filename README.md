@@ -106,7 +106,7 @@ Example Code: https://gitlab.com/mkarg/jaxrs-done-right/-/blob/jaxrs-3.1/
 
 ## Use github.com as maven package repository
 
-1. generate personal access token [2]: Profile → Settings → Developer Settings → Personal access tokens → Tokens (Classic) → Generate new Token (classic)
+1. generate [personal access token][2]: Profile → Settings → Developer Settings → Personal access tokens → Tokens (Classic) → Generate new Token (classic)
    1. enter note (`github-wunderlins` in my case)
    2. Permissions
       1. repo
@@ -131,6 +131,7 @@ Example Code: https://gitlab.com/mkarg/jaxrs-done-right/-/blob/jaxrs-3.1/
 	<servers>
 		<server>
 			<id>github-wunderlins</id>
+			<!-- github user name -->            
 			<username>wunderlins</username>
 			<password>${env.GITHUB_WUNDERLINS_WRITE}</password>
 		</server>
@@ -152,6 +153,7 @@ Example Code: https://gitlab.com/mkarg/jaxrs-done-right/-/blob/jaxrs-3.1/
 
     <repositories>
         <repository>
+            <!-- same as in settings.xml:servers/server/id -->
             <id>github-wunderlins</id>
             <url>${github.project.url}</url>
         </repository>
