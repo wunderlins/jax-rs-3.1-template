@@ -5,7 +5,7 @@
 
     <groupId>net.wunderlin.example</groupId>
     <artifactId>jaxrs</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.3</version>
 
     <properties>
         <mainClass>net.wunderlin.example.jaxrs.Main</mainClass>
@@ -17,30 +17,28 @@
         <github.project.url>https://maven.pkg.github.com/wunderlins/maven-public</github.project.url>
     </properties>
 
-    <!--repositories>
+    <repositories>
         <repository>
             <id>wunderlinnet-repository</id>
             <url>${gitlab.project.url}</url>
         </repository>
-    </repositories>
-    <distributionManagement>
+
         <repository>
+            <id>github-wunderlins</id>
+            <url>${github.project.url}</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <!--repository>
             <id>wunderlinnet-repository</id>
             <url>${gitlab.project.url}</url>
         </repository>
         <snapshotRepository>
             <id>wunderlinnet-repository</id>
             <url>${gitlab.project.url}</url>
-        </snapshotRepository>
-    </distributionManagement-->
+        </snapshotRepository-->
 
-    <repositories>
-        <repository>
-            <id>github-wunderlins</id>
-            <url>${github.project.url}</url>
-        </repository>
-    </repositories>
-    <distributionManagement>
         <repository>
             <id>github-wunderlins</id>
             <url>${github.project.url}</url>
