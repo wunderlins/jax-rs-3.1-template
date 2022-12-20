@@ -14,9 +14,10 @@
         <jaxrs.version>3.1.0</jaxrs.version>
         <jersey.version>3.1.0</jersey.version>
         <gitlab.project.url>https://gitlab.com/api/v4/projects/35971698/packages/maven</gitlab.project.url>
+        <github.project.url>https://maven.pkg.github.com/wunderlins/maven-public</github.project.url>
     </properties>
 
-    <repositories>
+    <!--repositories>
         <repository>
             <id>wunderlinnet-repository</id>
             <url>${gitlab.project.url}</url>
@@ -30,6 +31,23 @@
         <snapshotRepository>
             <id>wunderlinnet-repository</id>
             <url>${gitlab.project.url}</url>
+        </snapshotRepository>
+    </distributionManagement-->
+
+    <repositories>
+        <repository>
+            <id>github-wunderlins</id>
+            <url>${github.project.url}</url>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <repository>
+            <id>github-wunderlins</id>
+            <url>${github.project.url}</url>
+        </repository>
+        <snapshotRepository>
+            <id>github-wunderlins</id>
+            <url>${github.project.url}</url>
         </snapshotRepository>
     </distributionManagement>
 

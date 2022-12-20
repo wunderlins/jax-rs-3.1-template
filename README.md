@@ -25,7 +25,7 @@ Example Code: https://gitlab.com/mkarg/jaxrs-done-right/-/blob/jaxrs-3.1/
 6. https://www.youtube.com/watch?v=jwpb7ne5NJE
 7. https://www.youtube.com/watch?v=FOy6sH8WVg8
 
-## Use gitlab.com as maven repository
+## Use gitlab.com as maven package repository
 
 **CAVE**: 
 - You **must** use `Private-Token`/`Deploy-Token` or `Job-Token` as `<name>` in `.m2/settings.xml` or you will always get a `401 Unauthorized`, see [Documentation][1].
@@ -40,7 +40,8 @@ Example Code: https://gitlab.com/mkarg/jaxrs-done-right/-/blob/jaxrs-3.1/
    1. `$ echo $GITLAB_WUNDERLINNET_WRITE` # or
    2. `c:\> echo %GITLAB_WUNDERLINNET_WRITE%`
 5. configure your project, add deploy, repo channels as in `pom.xml`
-6. prevent clutter in registry: Settings → Package and Registries → Manage Storage ...: Number of duplicate assets to keep: 1
+6. set the nummeric id of your project in the url (replace `35971698`)
+7. prevent clutter in registry: Settings → Package and Registries → Manage Storage ...: Number of duplicate assets to keep: 1
 
 #### .m2/settings.xml
 
@@ -102,4 +103,71 @@ Example Code: https://gitlab.com/mkarg/jaxrs-done-right/-/blob/jaxrs-3.1/
 </project>
 ```
 
+
+## Use github.com as maven package repository
+
+1. generate personal access token [2]: Profile → Settings → Developer Settings → Personal access tokens → Tokens (Classic) → Generate new Token (classic)
+   1. enter note (`github-wunderlins` in my case)
+   2. Permissions
+      1. repo
+      2. admin:repo_hook
+      3. write:packages
+      4. delete:packages
+      5. delete_repo (documentation suggest to add this?
+   3. generate token
+2. configure maven, set authentication in your `~/.m2/settings.xml` according to the example below
+3. Set an environment Variable `GITHUB_WUNDERLINS_WRITE` with the token password (you may need to restart your IDE/shell so that the new env variable gets available)
+4. check if the environment variable is available: 
+   1. `$ echo $GITHUB_WUNDERLINS_WRITE` # or
+   2. `c:\> echo %GITHUB_WUNDERLINS_WRITE%`
+5. configure your project, add deploy, repo channels as in `pom.xml`
+
+#### .m2/settings.xml
+
+```xml
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+	<servers>
+		<server>
+			<id>github-wunderlins</id>
+			<username>wunderlins</username>
+			<password>${env.GITHUB_WUNDERLINS_WRITE}</password>
+		</server>
+	</servers>
+</settings>
+```
+
+#### pom.xml
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <github.project.url>https://maven.pkg.github.com/wunderlins/maven-public</github.project.url>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>github-wunderlins</id>
+            <url>${github.project.url}</url>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <repository>
+            <id>github-wunderlins</id>
+            <url>${github.project.url}</url>
+        </repository>
+        <snapshotRepository>
+            <id>github-wunderlins</id>
+            <url>${github.project.url}</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
+```
+
 [1]: https://docs.gitlab.com/ee/user/packages/maven_repository/#edit-the-settingsxml
+[2]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic
