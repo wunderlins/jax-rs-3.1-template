@@ -146,6 +146,50 @@
 </project>
 ```
 
+### use gitea.com as maven package registry
+
+#### settings.xml
+
+```xml
+<settings>
+  <servers>
+    <server>
+      <id>gitea</id>
+      <configuration>
+        <httpHeaders>
+          <property>
+            <name>Authorization</name>
+            <value>token ${env.GITEA_WUS_WRITE}</value>
+          </property>
+        </httpHeaders>
+      </configuration>
+    </server>
+  </servers>
+</settings>
+```
+
+#### pom.xml
+
+```xml
+<repositories>
+  <repository>
+    <id>gitea</id>
+    <url>http://workshop2.intra.wunderlin.net:3001/api/packages/wus/maven</url>
+  </repository>
+</repositories>
+<distributionManagement>
+  <repository>
+    <id>gitea</id>
+    <url>http://workshop2.intra.wunderlin.net:3001/api/packages/wus/maven</url>
+  </repository>
+  <snapshotRepository>
+    <id>gitea</id>
+    <url>http://workshop2.intra.wunderlin.net:3001/api/packages/wus/maven</url>
+  </snapshotRepository>
+</distributionManagement>
+```
+
+
 ## Upload packages
 
 ```bash
