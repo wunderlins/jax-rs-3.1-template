@@ -1,9 +1,18 @@
 # Example JAX-RS Service with Maven
 
-## Commands
+## repo
+
+This repo uses sub modules for docker images. checkout with sumbodules:
+
+```bash
+git clone --recursive git@github.com:wunderlins/jax-rs-3.1-template.git
+```
+
+## Commands (build, run, etc.)
 
 - run: `mvn exec:java`
 - build jar: `mvn package`
+- push jar to package registry: `mvn deploy` (cave, fails if version is already present in some registies)
 
 ## Building Blocks
 
