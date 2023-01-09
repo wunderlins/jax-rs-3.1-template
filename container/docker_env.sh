@@ -4,4 +4,4 @@ echo "$script_filename"
 
 KEYCLOAK_VERSION=20.0.1
 KEYCLOAK_LISTEN_PORT=8444
-KEYCLOAK_DATA_DIR=$script_filename/docker_data/keycloak/import
+KEYCLOAK_DATA_DIR=$script_filename/data/keycloak/import
