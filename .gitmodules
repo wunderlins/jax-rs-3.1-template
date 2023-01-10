@@ -1,3 +1,4 @@
 [submodule "docker"]
 	path = container/docker
 	url = git@github.com:wunderlins/docker.git
+	update = merge
