@@ -1,4 +1,4 @@
-[submodule "docker"]
+[submodule "container/docker"]
 	path = container/docker
 	url = git@github.com:wunderlins/docker.git
-	update = merge
+	branch = master
