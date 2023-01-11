@@ -1,0 +1,127 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.json
+openapi: 3.0.0
+info:
+  title: REST Server Example
+  description: ''
+  contact: {}
+  version: '1.0'
+servers:
+  - url: http://localhost:8080/rest
+    variables: {}
+paths:
+  /product:
+    get:
+      tags:
+        - Default
+      summary: v1 product
+      description: ''
+      operationId: V1Product
+      parameters:
+        - name: productId
+          in: query
+          description: ''
+          style: form
+          explode: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+      deprecated: false
+      security:
+        - oauthToken: []
+  /order:
+    get:
+      tags:
+        - Default
+      summary: v1 order
+      description: ''
+      operationId: V1Order
+      parameters:
+        - name: orderId
+          in: query
+          description: ''
+          style: form
+          explode: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      deprecated: false
+      security:
+        - oauthToken: []
+components:
+  securitySchemes:
+    oauthToken:
+      type: oauth2
+      description: Keycloak OIDC
+      flows:
+        authorizationCode:
+          authorizationUrl: https://keycloak/realms/keycloak-angular-sandbox/protocol/openid-connect/auth
+          tokenUrl: https://keycloak/realms/keycloak-angular-sandbox/protocol/openid-connect/token
+          scopes:
+            read: Grants read access
+            write: Grant write access
+            
+            
+  schemas:
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        shipDate:
+          type: string
+          format: date-time
+        status:
+          type: string
+          description: Order Status
+          enum:
+          - placed
+          - approved
+          - delivered
+        complete:
+          type: boolean
+          default: false
+      xml:
+        name: Order
+
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          type: string
+        description:
+          type: string
+        origin:
+          type: string
+        weight:
+          type: integer
+          format: int64
+        price:
+          type: integer
+          format: int64
+      xml:
+        name: Product
+        
+        
+security:
+  - oauthToken: []
+tags:
+  - name: Default
+    description: ''

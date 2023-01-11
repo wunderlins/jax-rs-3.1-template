@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <!--parent>
+    <artifactId>jaxrs</artifactId>
+    <groupId>net.wunderlin.example</groupId>
+    <version>0.0.3</version>
+  </parent-->
+
+  <groupId>net.wunderlin.example.openapi</groupId>
+  <artifactId>rest</artifactId>
+  <version>0.0.1</version>
+  <packaging>jar</packaging>
+
+  <name>rest</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>gitea</id>
+      <url>https://repository.immeditech.ch/api/packages/Public/maven</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <!--dependency>
+      <groupId>ch.immeditech.jakartaee</groupId>
+      <artifactId>keycloak</artifactId>
+      <version>9.1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.immeditech.jakartaee</groupId>
+      <artifactId>annotations</artifactId>
+      <version>9.1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.immeditech.jakartaee</groupId>
+      <artifactId>cors</artifactId>
+      <version>9.1.2</version>
+    </dependency-->
+    <!-- Jakarta EE -->
+    <dependency>
+      <groupId>jakarta.platform</groupId>
+      <artifactId>jakarta.jakartaee-web-api</artifactId>
+      <version>9.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- Jackson -->
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.13.2</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>rest</finalName>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.10.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.2.2</version>
+          <configuration>
+            <failOnMissingWebXml>false</failOnMissingWebXml>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.openapitools</groupId>
+        <artifactId>openapi-generator-maven-plugin</artifactId>
+        <version>6.0.1</version>
+        <executions>
+          <execution>
+            <id>openapi-codegen-java-sources</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <verbose>false</verbose>
+              <inputSpec>${project.basedir}/../openapi.yaml</inputSpec>
+              <generatorName>jaxrs-spec</generatorName>
+              <generateApiTests>false</generateApiTests>
+              <templateDirectory>${project.basedir}/templates</templateDirectory>
+              <skipOverwrite>false</skipOverwrite>
+              <generateApis>true</generateApis>
+              <generateModels>true</generateModels>
+              <addCompileSourceRoot>true</addCompileSourceRoot>
+
+              <configOptions>
+                <generatePom>false</generatePom>
+                <interfaceOnly>true</interfaceOnly>
+                <useSwaggerAnnotations>false</useSwaggerAnnotations>
+                <openApiNullable>true</openApiNullable>
+                <sourceFolder>src/main/java</sourceFolder>
+                <apiPackage>net.wunderlin.example.rest.api</apiPackage>
+                <modelPackage>net.wunderlin.example.rest.models</modelPackage>
+                <dateLibrary>java8</dateLibrary>
+                <disableHtmlEscaping>true</disableHtmlEscaping>
+
+              </configOptions>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
