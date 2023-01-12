@@ -73,7 +73,7 @@
     <sourceDirectory>src/main/java</sourceDirectory>
     <pluginManagement>
       <plugins>
-        <plugin>
+        <!--plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.10.1</version>
         </plugin>
@@ -83,7 +83,7 @@
           <configuration>
             <failOnMissingWebXml>false</failOnMissingWebXml>
           </configuration>
-        </plugin>
+        </plugin-->
       </plugins>
     </pluginManagement>
 
@@ -102,25 +102,34 @@
             <configuration>
               <verbose>false</verbose>
               <inputSpec>${project.basedir}/../openapi.yaml</inputSpec>
-              <generatorName>jaxrs-spec</generatorName>
+              <generatorName>jaxrs-jersey</generatorName>
               <generateApiTests>false</generateApiTests>
-              <templateDirectory>${project.basedir}/templates</templateDirectory>
+              <!--templateDirectory>${project.basedir}/templates</templateDirectory-->
               <skipOverwrite>false</skipOverwrite>
               <generateApis>true</generateApis>
               <generateModels>true</generateModels>
               <addCompileSourceRoot>true</addCompileSourceRoot>
+              <useJakartaEe>true</useJakartaEe>
 
               <configOptions>
                 <generatePom>false</generatePom>
-                <interfaceOnly>true</interfaceOnly>
+                <interfaceOnly>false</interfaceOnly>
                 <useSwaggerAnnotations>false</useSwaggerAnnotations>
                 <openApiNullable>true</openApiNullable>
-                <sourceFolder>src/main/java</sourceFolder>
+                <!--sourceFolder>src/main/java</sourceFolder-->
                 <apiPackage>net.wunderlin.example.rest.api</apiPackage>
                 <modelPackage>net.wunderlin.example.rest.models</modelPackage>
+                <invokerPackage>net.wunderlin.example.rest</invokerPackage>
                 <dateLibrary>java8</dateLibrary>
                 <disableHtmlEscaping>true</disableHtmlEscaping>
+                
+                <sourceFolder>../../../../src/gen/java</sourceFolder>
+                <implFolder>../../../../src/main/java</implFolder>
 
+                <!-- enable clang-format -->
+                <enablePostProcessFile>false</enablePostProcessFile>
+                <apiTests>true</apiTests>
+                <modelTests>true</modelTests>
               </configOptions>
             </configuration>
           </execution>
